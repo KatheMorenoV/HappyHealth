@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "242664134919",
+    "project_id": "happyhealth-6c9c4",
+    "storage_bucket": "happyhealth-6c9c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242664134919:android:8dbbf5da37b65a08c9cda2",
+        "android_client_info": {
+          "package_name": "com.xidne.happyhealth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMRltE-dEYaE36SFccmI6jL3ajD7syLLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
