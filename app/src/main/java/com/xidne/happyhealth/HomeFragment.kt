@@ -14,12 +14,13 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Infla el layout para este fragmento
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // Find the button and set an onClick listener
+        // Encuentra el botón y configura un listener para el clic
         val button: Button = view.findViewById(R.id.temperatureButton)
         button.setOnClickListener {
+            // Muestra un mensaje Toast al hacer clic en el botón
             Toast.makeText(activity, "¡Tienes una alta temperatura!", Toast.LENGTH_SHORT).show()
         }
 

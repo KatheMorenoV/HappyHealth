@@ -9,6 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
 
@@ -33,13 +37,18 @@ class ProfileFragment : Fragment() {
     }
 
     private fun cerrarSesion() {
-        // Lógica para cerrar sesión
-        FirebaseAuth.getInstance().signOut()
-        // Redirigir a la actividad de inicio de sesión o realizar otra acción
-        val intent = Intent(activity, MainActivity::class.java)
-        Toast.makeText(activity, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show()
-        startActivity(intent)
-        activity?.finish() // Opcional: finalizar la actividad actual para que no se pueda volver con el botón de atrás
+        // Lógica para borrar las citas de la base de datos local
+        GlobalScope.launch(Dispatchers.IO) {
+            AppDatabase.getDatabase(requireContext().applicationContext).citaDao().deleteAll()
+            withContext(Dispatchers.Main) {
+                // Lógica para cerrar sesión
+                FirebaseAuth.getInstance().signOut()
+                // Redirigir a la actividad de inicio de sesión o realizar otra acción
+                val intent = Intent(activity, MainActivity::class.java)
+                Toast.makeText(activity, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+                activity?.finish() // Opcional: finalizar la actividad actual para que no se pueda volver con el botón de atrás
+            }
+        }
     }
 }
-

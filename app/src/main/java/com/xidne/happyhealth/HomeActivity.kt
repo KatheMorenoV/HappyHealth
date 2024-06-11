@@ -14,12 +14,12 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializa con el primer fragmento
+        // Inicializa con el primer fragmento si no hay un estado guardado
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment())
         }
 
-        // Usa setOnItemSelectedListener en lugar de setOnItemReselectedListener
+        // Configura el listener para manejar la selección de elementos en el BottomNavigationView
         binding.bottomNavigationView3.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
@@ -32,6 +32,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    // Reemplaza el fragmento actual con el fragmento proporcionado
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -39,3 +40,4 @@ class HomeActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
+

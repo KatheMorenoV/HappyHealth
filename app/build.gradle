@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt' // Añade esta línea para habilitar kapt
 }
 
 android {
@@ -25,7 +26,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 
@@ -39,19 +40,26 @@ android {
 }
 
 dependencies {
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
 
-    //Implementación de Firebase para autentificar y guardar usuarios.
-    implementation platform('com.google.firebase:firebase-bom:32.1.1')
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-database'
+    //Implementación de Firebase para autentificar y guardar usuarios
+    implementation platform('com.google.firebase:firebase-bom:32.1.1') // Plataforma de gestión de dependencias de Firebase
+    implementation 'com.google.firebase:firebase-auth' // Autenticación de usuarios con Firebase
+    implementation 'com.google.firebase:firebase-database' // Base de datos en tiempo real de Firebase
+
+
+    //Implementación de Room para administrar Bases de Datos SQL Lite
+    def room_version = "2.4.3" // Definición de la versión de Room
+    implementation "androidx.room:room-runtime:$room_version" // Runtime de Room para operaciones de base de datos
+    kapt "androidx.room:room-compiler:$room_version" // Compilador de Room para generar código de acceso a la base de datos
+    implementation "androidx.room:room-ktx:$room_version" // Extensiones KTX de Room para coroutines y Flow
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
 }

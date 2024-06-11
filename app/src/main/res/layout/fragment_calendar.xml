@@ -10,6 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calendar_fragment"
@@ -19,6 +20,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.439" />
+
+    <Button
+        android:id="@+id/btnReservar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_fill"
+        android:drawableStart="@drawable/ic_reservar"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/reservar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/btnMisCitas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_fill"
+        android:drawableStart="@drawable/ic_mis_citas"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/mis_citas"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/btnReservar"
+        app:layout_constraintStart_toStartOf="@+id/btnReservar"
+        app:layout_constraintTop_toBottomOf="@+id/btnReservar" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
